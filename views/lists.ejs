@@ -1,0 +1,33 @@
+<%- include("header") -%>
+
+    <div class="box" id="heading">
+      <h1> <%= listTitle %> </h1>
+    </div>
+
+    <div class="box">
+
+          <% newListItems.forEach((item)=> { %>
+            <form action="/delete" method="post">
+              <div class="item">
+                <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="setTimeout(()=>{this.form.submit()},500)" >
+                <!-- post request goes after 0.5 sec...even if we uncheck the checkbox that we checked before(that triggered the post request)
+                if it was checked...the checked box id would have been sent...but since we unchecked it....
+                it still triggers post request as it is triggered by onchange and after 0.5 sec it still requests....
+                but there will be no checked items so...no items will be sent on the name of checkbox which will result in undefined -->
+                <p> <%= item.name %> </p>
+                <input type="hidden" name="listName" value="<%=listTitle%>"></input>
+              </div>
+            </form>
+          <% }) %>
+
+          <form action="/" class="item" method="post">
+            <input type="text" name="newItem" placeholder="Add a new task" autocomplete="off">
+            <button type="submit" name="list" value= <%= listTitle %> > + </button>
+          </form>
+
+
+
+
+    </div>
+
+<%- include("footer") -%>
