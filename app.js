@@ -143,3 +143,6 @@ app.get("/about", (req,res)=>{
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000.");
 });
+
+//mongosh "mongodb+srv://cluster0.7f4dowc.mongodb.net/myFirstDatabase" --apiVersion 1 --username raajitharallapalli.....in terminal
+//mongodb+srv://raajitharallapalli:<password>@cluster0.7f4dowc.mongodb.net/?retryWrites=true&w=majority.....for connecting application...
